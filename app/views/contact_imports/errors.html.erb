@@ -1,0 +1,6 @@
+<h1>Import Errors</h1>
+<ul>
+  <% @errors.each do |error| %>
+    <li>Row <%= error.row_number %>: <%= error.error_message %></li>
+  <% end %>
+</ul>
