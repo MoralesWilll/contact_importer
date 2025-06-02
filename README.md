@@ -140,6 +140,8 @@ name,date_of_birth,phone,credit_card,email,address
 John Doe,19900515,(+57) 300 123 45 67,4111111111111111,john.doe@email.com,123 Main St
 ```
 
+There is a folder in the project called test-files with 3 csv files to try the import feature
+
 ### Column Mapping
 
 The system supports automatic column detection based on header names:
