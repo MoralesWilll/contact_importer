@@ -1,0 +1,40 @@
+<%= form_with url: imports_path, method: :post, multipart: true, html: { class: "import-form space-y-8 max-w-xl mx-auto bg-white p-8 rounded shadow" } do %>
+  <div>
+    <label for="file" class="block font-semibold mb-2 text-gray-700">Select CSV File:</label>
+    <%= file_field_tag :file, class: "block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "file" %>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold mb-4 text-gray-800">Map Columns</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+      <div>
+        <label for="column_mapping_name" class="block mb-1 text-gray-700">Name Column:</label>
+        <%= text_field_tag "column_mapping[name]", nil, placeholder: "e.g. name or 0", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_name" %>
+      </div>
+      <div>
+        <label for="column_mapping_date_of_birth" class="block mb-1 text-gray-700">Date of Birth Column:</label>
+        <%= text_field_tag "column_mapping[date_of_birth]", nil, placeholder: "e.g. dob or 1", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_date_of_birth" %>
+      </div>
+      <div>
+        <label for="column_mapping_phone" class="block mb-1 text-gray-700">Phone Column:</label>
+        <%= text_field_tag "column_mapping[phone]", nil, placeholder: "e.g. phone or 2", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_phone" %>
+      </div>
+      <div>
+        <label for="column_mapping_address" class="block mb-1 text-gray-700">Address Column:</label>
+        <%= text_field_tag "column_mapping[address]", nil, placeholder: "e.g. address or 3", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_address" %>
+      </div>
+      <div>
+        <label for="column_mapping_email" class="block mb-1 text-gray-700">Email Column:</label>
+        <%= text_field_tag "column_mapping[email]", nil, placeholder: "e.g. email or 4", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_email" %>
+      </div>
+      <div>
+        <label for="column_mapping_credit_card_number" class="block mb-1 text-gray-700">Credit Card Number Column:</label>
+        <%= text_field_tag "column_mapping[credit_card_number]", nil, placeholder: "e.g. cc_number or 5", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500", id: "column_mapping_credit_card_number" %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= submit_tag "Upload CSV", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded shadow transition" %>
+  </div>
+<% end %>

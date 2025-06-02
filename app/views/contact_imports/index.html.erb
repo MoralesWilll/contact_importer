@@ -1,0 +1,40 @@
+<h1 class="text-3xl font-bold mb-6 text-gray-800">Your Contact Imports</h1>
+
+<div class="mb-6">
+  <%= link_to "New Import", new_contact_import_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300" %>
+</div>
+
+<div class="overflow-x-auto bg-white rounded-lg shadow-md">
+  <table class="w-full border-collapse border border-gray-300">
+    <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
+      <tr>
+        <th class="border p-4 text-left">Filename</th>
+        <th class="border p-4 text-left">Status</th>
+        <th class="border p-4 text-left">Uploaded At</th>
+        <th class="border p-4 text-left">Success Rate</th>
+        <th class="border p-4 text-left">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-800">
+      <% @contact_imports.each do |import| %>
+        <tr class="border hover:bg-gray-50 transition">
+          <td class="border p-4"><%= import.filename %></td>
+          <td class="border p-4 font-semibold"><%= import.status_display %></td>
+          <td class="border p-4"><%= import.created_at.strftime("%b %d, %Y %I:%M %p") %></td>
+          <td class="border p-4"><%= import.success_rate %>%</td>
+          <td class="border p-4 flex space-x-2">
+            <%= link_to "View", contact_import_path(import), class: "bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-200" %>
+            <% if import.status == "failed" %>
+              <%= link_to "Errors", errors_contact_import_path(import), class: "bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-200" %>
+            <% end %>
+            <%= button_to "Delete", contact_import_path(import), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-200" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-6">
+  <%= paginate @contact_imports %>
+</div>

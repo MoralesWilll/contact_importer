@@ -64,3 +64,23 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+gem "roo", "~> 2.10"
+
+gem "rubyzip", "~> 2.4"
+
+gem "csv"
+
+gem "sidekiq", "~> 8.0"
+
+gem "kaminari", "~> 1.2"
+
+gem "redis"
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  gem "timecop"
+  gem "faker"
+end

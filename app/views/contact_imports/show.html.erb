@@ -1,0 +1,40 @@
+<h1 class="text-2xl font-bold mb-6">Import Details</h1>
+
+<p class="text-gray-700"><strong>Filename:</strong> <%= @contact_import.filename %></p>
+<p class="text-gray-700"><strong>Status:</strong> <%= @contact_import.status.capitalize %></p>
+<p class="text-gray-700"><strong>Total Rows:</strong> <%= @contact_import.total_rows %></p>
+<p class="text-gray-700"><strong>Successful Imports:</strong> <%= @contact_import.successful_imports %></p>
+<p class="text-gray-700"><strong>Failed Imports:</strong> <%= @contact_import.failed_imports %></p>
+
+<h2 class="text-xl font-semibold mt-6 mb-4">Imported Contacts</h2>
+
+<% if @contacts.any? %>
+  <table class="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Name</th>
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Date of Birth</th>
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Phone</th>
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Credit Card (Last 4)</th>
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Address</th>
+        <th class="px-4 py-2 text-left font-semibold text-gray-700 border-b">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border-b"><%= contact.name %></td>
+          <td class="px-4 py-2 border-b"><%= contact.date_of_birth %></td>
+          <td class="px-4 py-2 border-b"><%= contact.phone %></td>
+          <td class="px-4 py-2 border-b"><%= contact.credit_card_last_four %></td>
+          <td class="px-4 py-2 border-b"><%= contact.address %></td>
+          <td class="px-4 py-2 border-b"><%= contact.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-gray-500 mb-6">No contacts found in this import.</p>
+<% end %>
+
+<%= link_to "Back to Imports", contact_imports_path, class: "inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow mt-4" %>
